@@ -46,28 +46,50 @@ settingsOverlay.addEventListener('click', (e) => {
 /* ============================================
    GITHUB REPOSITORIES
    ============================================ */
-const GITHUB_USERNAME = 'botcott';
+
+/* 
+   Добавьте сюда всех пользователей, чьи репозитории нужно показывать.
+   Порядок в массиве влияет на порядок вывода (сначала репозитории первого пользователя).
+*/
+const GITHUB_USERNAMES = [
+    'botcott',
+    '9leaks',
+    'kube-ddnet'
+];
 
 const projectList = document.getElementById('projectList');
 
-async function loadRepositories() {
+async function fetchUserRepos(username) {
+    const response = await fetch(
+        `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
+    );
+
+    if (!response.ok) {
+        throw new Error(`GitHub API error for "${username}": ${response.status}`);
+    }
+
+    const repos = await response.json();
+    if (!Array.isArray(repos)) return [];
+
+    /* Помечаем каждый репозиторий его владельцем, чтобы потом корректно строить ссылку */
+    return repos.map(repo => ({ ...repo, _owner: username }));
+}
+
+async function loadRepositories(usernames) {
     try {
-        const response = await fetch(
-            `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`
+        const results = await Promise.all(
+            usernames.map(name => fetchUserRepos(name))
         );
 
-        if (!response.ok) {
-            throw new Error(`GitHub API error: ${response.status}`);
-        }
+        /* Объединяем все репозитории в один массив */
+        const repos = results.flat();
 
-        const repos = await response.json();
-
-        if (!Array.isArray(repos) || repos.length === 0) {
+        if (repos.length === 0) {
             projectList.innerHTML = `<div class="project-loading">NO PUBLIC REPOSITORIES FOUND</div>`;
             return;
         }
 
-        /* Сортируем: сначала с описанием, потом без */
+        /* Сортируем: сначала с описанием, потом без; внутри — по дате обновления */
         repos.sort((a, b) => {
             if (a.description && !b.description) return -1;
             if (!a.description && b.description) return 1;
@@ -82,7 +104,9 @@ async function loadRepositories() {
 
             const title = document.createElement('div');
             title.className = 'project-title';
-            title.textContent = `> ${repo.name.toUpperCase()}`;
+            /* Показываем имя владельца, если репозиториев несколько пользователей */
+            const ownerPrefix = usernames.length > 1 ? `${repo._owner}/` : '';
+            title.textContent = `> ${ownerPrefix}${repo.name.toUpperCase()}`;
 
             const desc = document.createElement('div');
             desc.className = 'project-desc';
@@ -102,11 +126,9 @@ async function loadRepositories() {
             /* Кнопка LIVE DEMO (только если включён GitHub Pages) */
             if (repo.has_pages) {
                 const demoLink = document.createElement('a');
-                /* Если в настройках репозитория указан свой homepage — используем его,
-                   иначе стандартный GitHub Pages URL */
                 const pagesUrl = (repo.homepage && repo.homepage.trim() !== '')
                     ? repo.homepage
-                    : `https://${GITHUB_USERNAME}.github.io/${repo.name}/`;
+                    : `https://${repo._owner}.github.io/${repo.name}/`;
                 demoLink.href = pagesUrl;
                 demoLink.target = '_blank';
                 demoLink.rel = 'noopener noreferrer';
@@ -131,4 +153,4 @@ async function loadRepositories() {
     }
 }
 
-loadRepositories();
+loadRepositories(GITHUB_USERNAMES);
