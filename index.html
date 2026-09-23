@@ -1,61 +1,178 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>botcott | GitHub</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="icon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I am botcott</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="container">
+  <div class="pip-boy-wrapper">
     <header>
-        <img src="https://github.com/botcott.png" alt="Avatar" class="avatar">
-        <h1>botcott</h1>
-        <p class="bio"></p> <!-- Нужно будет добавить био потом -->
+      <div class="header-icon-left"></div>
+      <nav class="main-tabs">
+        <span class="tab-btn active" data-target="stat">STAT</span>
+        <span class="tab-btn" data-target="inv">INV</span>
+        <span class="tab-btn" data-target="data">DATA</span>
+        <span class="tab-btn" data-target="map">MAP</span>
+        <span class="tab-btn" data-target="radio">RADIO</span>
+      </nav>
+      <button class="settings-btn" id="settingsBtn" aria-label="Settings">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
+        </svg>
+      </button>
     </header>
 
-    <main class="grid">
-        <a href="https://github.com/botcott?tab=repositories" class="card">
-            <h3>Repositories</h3>
-            <p>Мои публичные репозитории с исходным кодом.</p>
-            <span class="link-label">Посмотреть →</span>
-        </a>
+    <div class="sub-header">
+      <span>PROFILE</span>
+      <span>SKILLS</span>
+      <span>PROJECTS</span>
+      <span>CONTACT</span>
+      <span>LINKS</span>
+    </div>
 
-        <a href="https://botcott.github.io/project-checkin/" class="card">
-            <h3>CheckIn — Журнал посещаемости</h3>
-            <p>Индивидуальный проект сайта для колледжа. Основная мысль этого проекта в том, чтобы создать веб-приложение для записи посещаемости.</p>
-            <span class="link-label">Открыть →</span>
-        </a>
+    <div class="content-area">
+      <div id="stat" class="tab-content active">
+        <div class="demo-mode">USER PROFILE</div>
+        <div class="vault-boy-container">
+          <div class="limb head"></div>
+          <div class="limb arm-left"></div>
+          <div class="limb arm-right"></div>
+          <div class="limb leg-left"></div>
+          <div class="limb leg-right"></div>
+          <img src="img/vaultboy.svg" alt="Vault Boy" class="vault-boy-img">
+        </div>
+        <div class="bio-text">
+          <p>HELLO, I'M BOTCOTT. HERE YOU CAN SEE MY PORTFOLIO AND CONTACT INFORMATION</p>
+        </div>
+        <div class="stats-bar">
+          <div class="stat-item">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 8h-1V6h-2v2H4v2h2v2h2v-2h2v2h2v-2h2v2h2v-2h1c1.1 0 2-.9 2-2s-.9-2-2-2z" />
+            </svg>
+            <span>5 YRS</span>
+          </div>
+          <div class="stat-item">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z" />
+            </svg>
+            <span>1K+ COMMITS</span>
+          </div>
+        </div>
+      </div>
 
-        <a href="https://botcott.github.io/deimos" class="card">
-            <h3>Deimos</h3>
-            <p>Сайт для сообщества deadspace14, сервера "Деймос" с указами для администрации.</p>
-            <span class="link-label">Открыть →</span>
-        </a>
+      <div id="inv" class="tab-content">
+        <div class="demo-mode">SKILLS & TECH</div>
+        <div class="inventory-list">
+          <div class="inventory-item-row"><span class="item-name">NODE.JS / EXPRESS</span> <span
+              class="item-count">EXCELLENT</span></div>
+          <div class="inventory-item-row"><span class="item-name">GIT / GITHUB</span> <span
+              class="item-count">EXPERT</span></div>
+          <div class="inventory-item-row"><span class="item-name">JAVASCRIPT (ES6+)</span> <span
+              class="item-count">GOOD</span></div>
+          <div class="inventory-item-row"><span class="item-name">PYTHON</span> <span class="item-count">GOOD</span>
+          </div>
+          <div class="inventory-item-row"><span class="item-name">HTML5 / CSS3</span> <span
+              class="item-count">NORMAL</span></div>
+          <div class="inventory-item-row"><span class="item-name">C++</span> <span class="item-count">NORMAL</span>
+          </div>
+          <div class="inventory-item-row"><span class="item-name">DOCKER</span> <span class="item-count">NORMAL</span>
+          </div>
+          <div class="inventory-item-row"><span class="item-name">C#</span> <span class="item-count">BAD</span></div>
+        </div>
+      </div>
 
-        <a href="https://t.me/thisnicknamewastaken" class="card">
-            <h3>Telegram</h3>
-            <p>Связаться со мной в Telegram.</p>
-            <span class="link-label">Написать →</span>
-        </a>
+      <div id="data" class="tab-content">
+        <div class="demo-mode">PROJECTS DATA</div>
+        <div class="project-list" id="projectList">
+          <div class="project-loading">LOADING REPOSITORIES...</div>
+        </div>
+      </div>
 
-        <a href="https://discord.com/users/botcott" class="card">
-            <h3>Discord</h3>
-            <p>Связаться со мной в Discord.</p>
-            <span class="link-label">Написать →</span>
-        </a>
+      <div id="map" class="tab-content">
+        <div class="demo-mode">CONTACT INFO</div>
+        <div class="contact-list">
+          <div class="contact-item">
+            <span class="contact-label">EMAIL:</span>
+            <a href="mailto:your.email@example.com">dev@botcott.ru</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">GITHUB:</span>
+            <a href="https://github.com/botcott" target="_blank">github.com/botcott</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">GITHUB:</span>
+            <a href="https://github.com/9leaks" target="_blank">github.com/9leaks</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">GITHUB:</span>
+            <a href="https://github.com/kube-ddnet" target="_blank">github.com/kube-ddnet</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">TELEGRAM:</span>
+            <a href="https://t.me/thisnicknamewastaken" target="_blank">@thisnicknamewastaken</a>
+          </div>
+        </div>
+      </div>
 
-        <a href="https://www.donationalerts.com/r/botcott" class="card-donate">
-            <h3>Пожертвовать на светлое будущее</h3>
-            <p>
-                Пожертвуйте на будущую разработку масштабных проектов.<br>
-            </p>
-            <span class="link-label">Пожертвовать →</span>
-        </a>
-    </main>
-</div>
+      <div id="radio" class="tab-content">
+        <div class="demo-mode">RADIO LINKS</div>
+        <div class="radio-list h2">
+          <h1>NULL</h1>
+          <!-- <a href="#" target="_blank">[ PERSONAL BLOG ]</a> -->
+          <!-- <a href="#" target="_blank">[ TWITTER / X ]</a> -->
+          <!-- <a href="#" target="_blank">[ YOUTUBE CHANNEL ]</a> -->
+          <!-- <a href="#" target="_blank">[ RESUME / CV ]</a> -->
+        </div>
+      </div>
+    </div>
 
+    <div class="bottom-area">
+      <div class="inventory-bar">
+        <span class="inventory-item">STIMPAK (0)</span>
+        <span class="inventory-item">RADAWAY (0)</span>
+      </div>
+      <div class="footer-bar">
+        <div class="hp-section">
+          <span>HP 115/115</span>
+        </div>
+        <div class="level-section">
+          <span>LEVEL 6</span>
+          <div class="level-bar">
+            <div class="level-fill"></div>
+          </div>
+        </div>
+        <div class="ap-section">
+          <span>AP 90/90</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings-overlay" id="settingsOverlay">
+    <div class="settings-panel">
+      <div class="settings-header">
+        <span>SETTINGS</span>
+        <button class="close-btn" id="closeSettings">[ X ]</button>
+      </div>
+      <div class="settings-body">
+        <label class="toggle-row">
+          <span>SCREEN BULGE (3D)</span>
+          <input type="checkbox" id="bulgeToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js" defer></script>
 </body>
+
 </html>
